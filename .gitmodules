@@ -1,0 +1,6 @@
+[submodule "fonts/Libre-Baskerville"]
+	path = fonts/Libre-Baskerville
+	url = https://github.com/impallari/Libre-Baskerville
+[submodule "fonts/FiraCode"]
+	path = fonts/FiraCode
+	url = https://github.com/tonsky/FiraCode

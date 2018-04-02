@@ -1,0 +1,103 @@
+% Configuração de Texto
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{lipsum}
+
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage{parskip}
+\restoreparindent
+
+% Tradução
+\usepackage{polyglossia}
+\setdefaultlanguage{brazil}
+\usepackage[pt-BR]{datetime2}
+
+% Imagens
+\usepackage{graphicx}
+\graphicspath{{imagens/},{graficos/},{diagramas/}}
+
+% Unidades Sistema Internacional
+\usepackage[cdot,squaren]{SIunits}
+\usepackage{subfigure}
+\providecommand\subfigureautorefname{Figura}
+
+% Cores
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[table]{xcolor}
+
+% Layout do documento
+\usepackage[hmarginratio=3:2,vmarginratio=3:2,top=30mm,left=30mm]{geometry}
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage{float}
+\usepackage{balance}
+\usepackage{placeins}
+\renewcommand{\baselinestretch}{1.5}
+
+% Tabelas
+\usepackage{booktabs}
+
+% Referências
+\usepackage[hidelinks,brazil]{hyperref}
+\usepackage[language=brazil,style=abnt,indent]{biblatex}
+\usepackage{csquotes}
+
+% Matemática
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{mathtools}
+
+% Primeira letra maior
+\usepackage{lettrine}
+
+% Customização do resumo
+\usepackage[addtotoc]{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\itshape}
+
+% Apêndices
+\usepackage[titletoc,title]{appendix}
+\usepackage{etoolbox, apptools}
+\AtBeginEnvironment{appendices}{\appendixtrue}
+
+% Customização dos intertítulos
+\usepackage{titlesec}
+\renewcommand\thesection{\Roman{section}.~}
+\renewcommand\thesubsection{\arabic{subsection}.~}
+\renewcommand\thesubsubsection{\thesubsection\alph{subsubsection})}
+\titleformat{\section}[block]{\huge\bfseries\scshape\centering}{\IfAppendix{\appendixname~}{\relax}\thesection\IfAppendix{:~}{}}{1em}{}
+\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{10pt}
+\newcommand{\sectionbreak}{\clearpage}
+
+
+% Customização de cabeçalho e rodapé
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+% \fancyhead[C]{Publicado em \DTMlangsetup{showdayofmonth=false}\today\DTMlangsetup{showdayofmonth=true}} % Custom header text
+\fancyfoot[RO,LE]{\thepage}
+
+% Fonte
+\setromanfont{Libre Baskerville}
+\linespread{1.1}
+
+% Código-fonte
+\usepackage{listings}
+\setmonofont{Fira Code}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fullflexible,keepspaces,
+    inputencoding=utf8
+}
+\newcommand*{\Apêndiceautorefname}{Apêndice}
+
+\addto\captionsbrazil{%
+    \renewcommand{\lstlistingname}{Código}
+    \renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}
+    \renewcommand{\appendixname}{Apêndice}
+    \renewcommand{\appendixpagename}{Apêndices}
+}
+
