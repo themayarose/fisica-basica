@@ -64,22 +64,22 @@ q_n(t))$  um funcional que possua mínimos locais nas funções $\mathcal{Q} :=
 Entre outros exemplos úteis, temos:
 
 \begin{table}[H]
-	\centering
-	\begin{tabularx}{\textwidth}{lXr}
-		\toprule
-		Nome & Definição & Equação \\
+    \centering
+    \begin{tabularx}{\textwidth}{lXr}
+        \toprule
+        Nome & Definição & Equação \\
         \midrule
         Braquistócrona & %
             Superfície que minimiza o tempo que uma partícula demora para %
-            deslizar sob influência de um campo gravitacional & %
+            cair diagonalmente sob influência de um campo gravitacional & %
             $f(y, \dot y) = y^{\frac{1}{2}}~\sqrt{1 + {\dot y}^2}$ \\ 
         Geodésica hiperbólica & %
             Menor caminho entre dois pontos em um semiplano hiperbólico & %
             $f(y, \dot y) = y^{-1}~\sqrt{1 + {\dot y}^2}$ \\
-		\bottomrule
-	\end{tabularx}
-	\caption{Resultados comuns de cálculos variacionais}
-	\label{tab:varcalc_eg}
+        \bottomrule
+    \end{tabularx}
+    \caption{Resultados comuns de cálculos variacionais}
+    \label{tab:varcalc_eg}
 \end{table}
 
 Essas equações podem ser derivadas de maneira extremamente similar à do
@@ -91,8 +91,91 @@ usar a Identidade de Beltrami para encontrar grandezas constantes que auxiliam
 a resolução das equações de Euler-Lagrange:
 
 \begin{namedeq}[Identidade de Beltrami]
+    $\forall i \in \{1, \ldots, n\} \exists C_i = L - \dot q_i \tpd{L}{\dot
+    q_i} \text{t.q.} \tod{C_i}{t} = 0$, i.e.:
     \begin{equation*}
         \label{eq:beltrami}
-        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0
+        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0, \forall i \in \{1, 
+        \ldots, n\}
     \end{equation*}
 \end{namedeq}
+
+\subsubsection{Multiplicadores de Lagrange}
+\label{sssec:lagrange_multipliers}
+
+No caso de haver \textbf{restrições} ao movimento da(s) partícula(s), como uma
+partícula que anda sobre uma canaleta, ou presa a fios etc., que a impeça de se
+movimentar livremente e portanto relacione diferentes coordenadas, pode-se
+utilizar os multiplicadores de Lagrange para obter uma lagrangiana que cuja
+aplicação nas equações de Euler-Lagrange fornece imediatamente a trajetória da
+partícula.
+
+\begin{eg}
+    \FloatBarrier
+    Considerando a situação da \autoref{fig:mult_lagrange}, temos dois blocos
+    com algumas restrições de movimento: definindo a origem sobre a polia, e o
+    tamanho do fio (inextensível) como $l$, temos que o bloco 1 fica sempre
+    sobre a mesa (i.e., $y_1 = 0$) e que a soma das coordenadas $x_1$ e $y_2$,
+    em módulo, deve corresponder ao tamanho do fio (i.e., $|x_1| + |y_2| = l
+    \Rightarrow x_1 + y_2 = -l$). Para simplificar, podemos impor que o bloco 2
+    também não se mexe horizontalmente, i.e., $x_2 = 0$.
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=.5\textwidth]{mult_lagrange}
+        \caption{Blocos 1 e 2, unidos por um fio ideal}
+        \label{fig:mult_lagrange}
+    \end{figure}
+    \FloatBarrier
+
+    Considerando ainda que $L = T - V$, como será visto na
+    \autoref{ssec:lagrange_hamilton}, temos os termos para a lagrangiana tal
+    como especificados na \autoref{tab:lagrange_multipliers}, resultando na
+    lagrangiana da \autoref{eq:eg_lag_mult}.
+
+    \begin{table}[H]
+        \centering
+        \begin{tabularx}{\textwidth}{lllX}
+            \toprule
+            Origem & Coordenadas & Restrição & Termo da lagrangiana \\
+            \midrule
+            Bloco 1 & $x_1$, $y_1$ & -- & %
+                $\frac{m_1}{2} \del{{\dot x_1}^2 + {\dot y_1}^2} - mgy_1$ \\
+            Bloco 2 & $x_2$, $y_2$ & -- & %
+                $\frac{m_2}{2} \del{{\dot x_2}^2 + {\dot y_2}^2} - mgy_2$ \\
+            Mesa & $\lambda_1$ & $y_1 = 0$ & %
+                $\lambda_1 \del{y_1 - 0}$ \\
+            Fio & $\lambda_2$ & $x_1 + y_2 = -l$ &%
+                $\lambda_2 \del{x_1 + y_2 + l}$ \\
+            $\nexists~\text{movimento horizontal}$ & $\lambda_3$ & $x_2 = 0$ & %
+                $\lambda_3 \del{x_2 - 0}$ \\
+            \bottomrule
+        \end{tabularx}
+        \caption{Coordenadas e restrições dos multiplicadores de Lagrange}
+        \label{tab:lagrange_multipliers}
+    \end{table}
+    
+    \begin{equation}
+        \label{eq:eg_lag_mult}
+        L = \frac{m_1}{2} \del{{\dot x_1}^2 + {\dot y_1}^2} - m_1gy_1 + %
+            \frac{m_2}{2} \del{{\dot x_2}^2 + {\dot y_2}^2} - m_2gy_2 + %
+            \lambda_1 y_1 + %
+            \lambda_2 \del{x_1 + y_2 + l} + %
+            \lambda_3 x_2 
+    \end{equation}
+\end{eg}
+
+Em resumo, uma restrição de coordenadas pode ser representada como $g(q_1,
+\ldots, q_n, \dot q_1, \ldots, \dot q_n) = 0$. Se houver $k \in \mathbb{N}$
+restrições em vigor em um determinado sistema, a lagrangiana modificada $L'$ que
+incorpora essas restrições será dada por: 
+
+\begin{equation}
+    \label{eq:lag_mult}
+    L' = L + \sum_{i=1}^{k} \lambda_i~g_i(q_1, \ldots, q_n, \dot q_1, \ldots, %
+        \dot q_n)
+\end{equation}
+
+Onde $L$ é a lagrangiana original do sistema, e $\lambda_i$ são as coordenadas
+extras que deverão ser levadas em consideração na resolução das equações de
+Euler-Lagrange. 
