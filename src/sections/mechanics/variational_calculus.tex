@@ -1,2 +1,98 @@
 \subsection{Cálculo variacional}
 \label{ssec:variational_calculus}
+
+Seja $\mathcal{F}(q_1(t), \ldots, q_n(t), \dot q_1(t), \ldots, \dot q_n(t)) :=
+\int_{t_0}^{t_1} \dif t~f(t, q_1(t), \ldots, q_n(t), \dot q_1(t), \ldots, \dot
+q_n(t))$  um funcional que possua mínimos locais nas funções $\mathcal{Q} :=
+\left\{\chi_1(t), \ldots, \chi_n(t) \right\}$. Então, $\forall i \in \{1,
+\ldots,  n\}$, $\mathcal{Q}$ é a solução do sistema de equações diferenciais:
+
+\begin{equation}
+    \label{eq:lagrange}
+    \dod{}{t} \del{ \dpd{f}{\dot q_i} } = \dpd{f}{q_i}
+\end{equation}
+
+\begin{eg}[Princípio de Fermat]
+    \label{eg:fermat}
+    O princípio de Fermat diz que a luz andando num meio percorre o caminho que
+    minimiza o \textbf{tempo} de percurso. Isto é, dado um meio bidimensional
+    cujo índice de refração depende da posição ($n = n(x,y)$), temos:
+
+    \begin{equation}
+        \begin{aligned}
+        T = \int_{t_0}^{t_1} \dif t =&  \\
+        = \frac{1}{c} \int_{t_0}^{t_1} \dif t~\frac{c}{v} \dod{s}{t} =& \\
+        = \frac{1}{c} \int_{A}^{B} \dif s~n(x,y)  =& \\
+        = \frac{1}{c} \int_{A}^{B} \sqrt{{\dif x}^2 + {\dif y}^2} n(x,y) =& \\
+        = \frac{1}{c} \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~ n(x,y) 
+        \end{aligned}
+    \end{equation}
+
+    Onde $\dot y := \tod{y}{x}$. Desse modo, se definirmos o funcional
+    $\mathcal{T}(y, \dot y) := \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~
+    n(x,y)$,  sabemos que o caminho $y(x)$ é solução da \autoref{eq:lagrange}
+    para $f(x, y, \dot y) = \sqrt{1 + {\dot y}^2}~n(x,y)$.
+\end{eg}
+
+
+\begin{eg}[Catenária]
+    \label{eg:catenaria}
+    A catenária é a curva que minimiza a energia potencial gravitacional de uma
+    corda inelástica presa pelas suas duas extremidades, e cujo corpo é livre e
+    não encosta no chão.
+
+    A energia potencial gravitacional de uma partícula puntiforme é dada por
+    $E_g = mgy$, e, considerando uma corda com densidade linear de massa $\rho$,
+    podemos fazer:
+
+    \begin{equation}
+        \begin{aligned}
+            E_g = \int_M \dif m ~ gy =& \\
+            = \int_A^B \dif s~\rho gy =& \\
+            = \rho g \int_A^B \sqrt{{\dif x}^2 + {\dif y}^2}~y =& \\
+            = \rho g \int_{x_0}^{x_1} \dif x~y \sqrt{1 + {\dot y}^2}
+        \end{aligned}
+    \end{equation}
+
+    Novamente, $\dot y := \tod{y}{x}$. Também de forma análoga ao
+    \autoref{eg:fermat}, definindo o funcional $\mathcal{E}(y, \dot y) :=
+    \int_{x_0}^{x_1} \dif x~y \sqrt{1 + {\dot y}^2}$, teremos que a curva $y(x)$
+    será a catenária, e será solução da \autoref{eq:lagrange} para $f(y, \dot y)
+    = y \sqrt{1 + {\dot y}^2}$.
+\end{eg}
+
+Entre outros exemplos úteis, temos:
+
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\textwidth}{lXr}
+		\toprule
+		Nome & Definição & Equação \\
+        \midrule
+        Braquistócrona & %
+            Superfície que minimiza o tempo que uma partícula demora para %
+            deslizar sob influência de um campo gravitacional & %
+            $f(y, \dot y) = y^{\frac{1}{2}}~\sqrt{1 + {\dot y}^2}$ \\ 
+        Geodésica hiperbólica & %
+            Menor caminho entre dois pontos em um semiplano hiperbólico & %
+            $f(y, \dot y) = y^{-1}~\sqrt{1 + {\dot y}^2}$ \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Resultados comuns de cálculos variacionais}
+	\label{tab:varcalc_eg}
+\end{table}
+
+Essas equações podem ser derivadas de maneira extremamente similar à do
+\autoref{eg:fermat} e do \autoref{eg:catenaria}. 
+
+De maneira geral, se um funcional tem um lagrangiano (i.e. $\mathcal{F}=\int
+\dif t~L$) independente do tempo (no caso, a variável de integração), pode-se
+usar a Identidade de Beltrami para encontrar grandezas constantes que auxiliam
+a resolução das equações de Euler-Lagrange:
+
+\begin{namedeq}[Identidade de Beltrami]
+    \begin{equation*}
+        \label{eq:beltrami}
+        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0
+    \end{equation*}
+\end{namedeq}

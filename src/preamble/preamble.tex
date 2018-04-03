@@ -24,6 +24,7 @@
 % Cores
 \usepackage[usenames, dvipsnames]{color}
 \usepackage[table]{xcolor}
+\usepackage{tabularx}
 
 % Layout do documento
 \usepackage[hmarginratio=3:2,vmarginratio=3:2,top=30mm,left=30mm]{geometry}
@@ -46,6 +47,16 @@
 \usepackage{amssymb}
 \usepackage{braket}
 \usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\declaretheoremstyle[bodyfont=\normalfont,spaceabove=10pt, %
+    spacebelow=10pt]{egstyle}
+\declaretheoremstyle[bodyfont=\normalfont,spaceabove=10pt, %
+    spacebelow=10pt,notefont=\normalfont\bfseries,notebraces={- }{}]{eqstyle}
+\declaretheorem[name=Exemplo,parent=subsection,style=egstyle]{eg}
+\declaretheorem[name=Equação,sibling=equation,style=eqstyle]{namedeq}
+
 
 % Primeira letra maior
 \usepackage{lettrine}
@@ -63,10 +74,10 @@
 % Customização dos intertítulos
 \usepackage{titlesec}
 \renewcommand\thesection{\Roman{section}.~}
-\renewcommand\thesubsection{\arabic{subsection}.~}
-\renewcommand\thesubsubsection{\thesubsection\alph{subsubsection})}
+\renewcommand\thesubsection{\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.~\alph{subsubsection})}
 \titleformat{\section}[block]{\huge\bfseries\scshape\centering}{\IfAppendix{\appendixname~}{\relax}\thesection\IfAppendix{:~}{}}{1em}{}
-\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsection}[block]{\large\bfseries}{\thesubsection.~}{1em}{}
 \titlespacing*{\subsection}{0pt}{10pt}{10pt}
 \newcommand{\sectionbreak}{\clearpage}
 
@@ -83,6 +94,8 @@
 % Fonte
 \setromanfont{Libre Baskerville}
 \linespread{1.1}
+\usepackage{euscript}[mathcal]
+\usepackage{commath}
 
 % Código-fonte
 \usepackage{listings}
