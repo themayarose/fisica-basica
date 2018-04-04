@@ -24,7 +24,7 @@ q_n(t))$  um funcional que possua mínimos locais nas funções $\mathcal{Q} :=
         = \frac{1}{c} \int_{t_0}^{t_1} \dif t~\frac{c}{v} \dod{s}{t} =& \\
         = \frac{1}{c} \int_{A}^{B} \dif s~n(x,y)  =& \\
         = \frac{1}{c} \int_{A}^{B} \sqrt{{\dif x}^2 + {\dif y}^2} n(x,y) =& \\
-        = \frac{1}{c} \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~ n(x,y) 
+        = \frac{1}{c} \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~ n(x,y)
         \end{aligned}
     \end{equation}
 
@@ -72,7 +72,7 @@ Entre outros exemplos úteis, temos:
         Braquistócrona & %
             Superfície que minimiza o tempo que uma partícula demora para %
             cair diagonalmente sob influência de um campo gravitacional & %
-            $f(y, \dot y) = y^{\frac{1}{2}}~\sqrt{1 + {\dot y}^2}$ \\ 
+            $f(y, \dot y) = y^{\frac{1}{2}}~\sqrt{1 + {\dot y}^2}$ \\
         Geodésica hiperbólica & %
             Menor caminho entre dois pontos em um semiplano hiperbólico & %
             $f(y, \dot y) = y^{-1}~\sqrt{1 + {\dot y}^2}$ \\
@@ -83,7 +83,7 @@ Entre outros exemplos úteis, temos:
 \end{table}
 
 Essas equações podem ser derivadas de maneira extremamente similar à do
-\autoref{eg:fermat} e do \autoref{eg:catenaria}. 
+\autoref{eg:fermat} e do \autoref{eg:catenaria}.
 
 De maneira geral, se um funcional tem um lagrangiano $L$ (i.e. $\mathcal{F}=\int
 \dif t~L$) independente da variável de integração (no caso, o tempo), pode-se
@@ -95,7 +95,7 @@ a resolução das equações de Euler-Lagrange:
     q_i} \text{t.q.} \tod{C_i}{t} = 0$, i.e.:
     \begin{equation*}
         \label{eq:beltrami}
-        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0, \forall i \in \{1, 
+        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0, \forall i \in \{1,
         \ldots, n\}
     \end{equation*}
 \end{namedeq}
@@ -138,37 +138,46 @@ partícula.
         \begin{tabularx}{\textwidth}{lllX}
             \toprule
             Origem & Coordenadas & Restrição & Termo da lagrangiana \\
+
             \midrule
-            Bloco 1 & $x_1$, $y_1$ & -- & %
-                $\frac{m_1}{2} \del{{\dot x_1}^2 + {\dot y_1}^2} - mgy_1$ \\
-            Bloco 2 & $x_2$, $y_2$ & -- & %
-                $\frac{m_2}{2} \del{{\dot x_2}^2 + {\dot y_2}^2} - mgy_2$ \\
-            Mesa & $\lambda_1$ & $y_1 = 0$ & %
-                $\lambda_1 \del{y_1 - 0}$ \\
-            Fio & $\lambda_2$ & $x_1 + y_2 = -l$ &%
-                $\lambda_2 \del{x_1 + y_2 + l}$ \\
-            $\nexists~\text{movimento horizontal}$ & $\lambda_3$ & $x_2 = 0$ & %
-                $\lambda_3 \del{x_2 - 0}$ \\
+
+            Bloco 1 & $x_1$, $y_1$ & -- & $\frac{m_1}{2} \del{{\dot x_1}^2 +
+            {\dot y_1}^2} - m_1gy_1$ \\
+
+            Bloco 2 & $x_2$, $y_2$ & -- & $\frac{m_2}{2} \del{{\dot x_2}^2 +
+            {\dot y_2}^2} - m_2gy_2$ \\
+
+            Mesa & $\lambda_1$ & $y_1 = 0$ &  $\lambda_1 \del{y_1 - 0}$ \\
+
+            Fio & $\lambda_2$ & $x_1 + y_2 = -l$ & $\lambda_2 \del{x_1 + y_2 +
+            l}$ \\
+
+            $\nexists~\text{movimento horizontal}$ & $\lambda_3$ & $x_2 = 0$ &
+            $\lambda_3 \del{x_2 - 0}$ \\
+
             \bottomrule
+
         \end{tabularx}
-        \caption{Coordenadas e restrições dos multiplicadores de Lagrange}
-        \label{tab:lagrange_multipliers}
-    \end{table}
-    
+
+    \caption{Coordenadas e restrições dos multiplicadores de Lagrange}
+    \label{tab:lagrange_multipliers}
+
+\end{table}
+
     \begin{equation}
         \label{eq:eg_lag_mult}
         L = \frac{m_1}{2} \del{{\dot x_1}^2 + {\dot y_1}^2} - m_1gy_1 + %
             \frac{m_2}{2} \del{{\dot x_2}^2 + {\dot y_2}^2} - m_2gy_2 + %
             \lambda_1 y_1 + %
             \lambda_2 \del{x_1 + y_2 + l} + %
-            \lambda_3 x_2 
+            \lambda_3 x_2
     \end{equation}
 \end{eg}
 
 Em resumo, uma restrição de coordenadas pode ser representada como $g(q_1,
 \ldots, q_n, \dot q_1, \ldots, \dot q_n) = 0$. Se houver $k \in \mathbb{N}$
 restrições em vigor em um determinado sistema, a lagrangiana modificada $L'$ que
-incorpora essas restrições será dada por: 
+incorpora essas restrições será dada por:
 
 \begin{equation}
     \label{eq:lag_mult}
@@ -178,4 +187,4 @@ incorpora essas restrições será dada por:
 
 Onde $L$ é a lagrangiana original do sistema, e $\lambda_i$ são as coordenadas
 extras que deverão ser levadas em consideração na resolução das equações de
-Euler-Lagrange. 
+Euler-Lagrange.
