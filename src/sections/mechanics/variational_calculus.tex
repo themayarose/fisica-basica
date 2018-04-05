@@ -1,16 +1,34 @@
 \subsection{Cálculo variacional}
 \label{ssec:variational_calculus}
 
-Seja $\mathcal{F}(q_1(t), \ldots, q_n(t), \dot q_1(t), \ldots, \dot q_n(t)) :=
-\int_{t_0}^{t_1} \dif t~f(t, q_1(t), \ldots, q_n(t), \dot q_1(t), \ldots, \dot
-q_n(t))$  um funcional que possua mínimos locais nas funções $\mathcal{Q} :=
-\left\{\chi_1(t), \ldots, \chi_n(t) \right\}$. Então, $\forall i \in \{1,
-\ldots,  n\}$, $\mathcal{Q}$ é a solução do sistema de equações diferenciais:
+Seja $\mathcal{L} : \mathbb{R} \times \mathbb{R}^n \times \mathbb{R}^n
+\rightarrow \mathbb{R}$ uma função do tempo, de $n$ coordenadas e de suas
+derivadas temporais, denominada \textbf{lagrangiano}, e seja
+$\mathcal{S}_\mathcal{L} : \del{\mathbb{R} \times \mathbb{R}^n \times
+\mathbb{R}^n \rightarrow \mathbb{R}} \rightarrow \mathbb{R}$ um funcional
+definido de modo que
 
-\begin{equation}
-    \label{eq:lagrange}
-    \dod{}{t} \del{ \dpd{f}{\dot q_i} } = \dpd{f}{q_i}
-\end{equation}
+\begin{equation*}
+    \mathcal{S}_\mathcal{L} := \int_{t_0}^{t_1} \dif t~\mathcal{L}(t, q_1(t),
+    \ldots, q_n(t), \dot q_1(t), \ldots, \dot q_n(t)) \text{.}
+\end{equation*}
+
+Considerando $t_0$ e $t_1$ como condições iniciais (ou de contorno), e que
+$\mathcal{S}_\mathcal{L}$ possua mínimo local em $\mathcal{L}(t, \mathcal{Q},
+\dot{\mathcal{Q}})$ para determinado $\mathcal{Q} := \left\{\chi_1(t), \ldots,
+\chi_n(t) \right\}$, então $\mathcal{Q}$ é a solução do sistema de equações
+diferenciais:
+
+\begin{namedeq}[Equação de Euler-Lagrange]
+    \begin{gather*}
+        \label{eq:lagrange}
+        \dod{}{t} \del{ \dpd{\mathcal{L}}{\dot q_i} } = \dpd{\mathcal{L}}{q_i}
+        \text{,} \\
+        \forall i \in \left\{1, \ldots, n\right\} \text{.}
+    \end{gather*}
+\end{namedeq}
+
+
 
 \begin{eg}[Princípio de Fermat]
     \label{eg:fermat}
@@ -18,20 +36,28 @@ q_n(t))$  um funcional que possua mínimos locais nas funções $\mathcal{Q} :=
     minimiza o \textbf{tempo} de percurso. Isto é, dado um meio bidimensional
     cujo índice de refração depende da posição ($n = n(x,y)$), temos:
 
-    \begin{equation}
+    \begin{equation*}
         \begin{aligned}
-        T = \int_{t_0}^{t_1} \dif t =&  \\
-        = \frac{1}{c} \int_{t_0}^{t_1} \dif t~\frac{c}{v} \dod{s}{t} =& \\
-        = \frac{1}{c} \int_{A}^{B} \dif s~n(x,y)  =& \\
-        = \frac{1}{c} \int_{A}^{B} \sqrt{{\dif x}^2 + {\dif y}^2} n(x,y) =& \\
-        = \frac{1}{c} \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~ n(x,y)
+            T = \int_{t_0}^{t_1} \dif t =&  \\
+            = \frac{1}{c} \int_{t_0}^{t_1} \dif t~\frac{c}{v} \dod{s}{t} =& \\
+            = \frac{1}{c} \int_{A}^{B} \dif s~n(x,y)  =& \\
+            = \frac{1}{c} \int_{A}^{B} \sqrt{{\dif x}^2 + {\dif y}^2} n(x,y) =&
+            \\
+            = \frac{1}{c} \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~ n(x,y)
         \end{aligned}
+    \end{equation*}
+
+    Aqui,
+
+    \begin{equation}
+        \dot y := \dod{y}{x} \text{.}
+        \label{eq:dot_derives_in_x}
     \end{equation}
 
-    Onde $\dot y := \tod{y}{x}$. Desse modo, se definirmos o funcional
-    $\mathcal{T}(y, \dot y) := \int_{x_0}^{x_1} \dif x \sqrt{1 + {\dot y}^2} ~
-    n(x,y)$,  sabemos que o caminho $y(x)$ é solução da \autoref{eq:lagrange}
-    para $f(x, y, \dot y) = \sqrt{1 + {\dot y}^2}~n(x,y)$.
+    Desse modo, se definirmos $\mathcal{L}(x, y, \dot y) = \sqrt{1 + {\dot
+    y}^2}~n(x,y)$, sabemos que o caminho $y(x)$ será solução da
+    \autoref{eq:lagrange} para o $\mathcal{L}$ definido.
+
 \end{eg}
 
 
@@ -54,11 +80,11 @@ q_n(t))$  um funcional que possua mínimos locais nas funções $\mathcal{Q} :=
         \end{aligned}
     \end{equation}
 
-    Novamente, $\dot y := \tod{y}{x}$. Também de forma análoga ao
-    \autoref{eg:fermat}, definindo o funcional $\mathcal{E}(y, \dot y) :=
-    \int_{x_0}^{x_1} \dif x~y \sqrt{1 + {\dot y}^2}$, teremos que a curva $y(x)$
-    será a catenária, e será solução da \autoref{eq:lagrange} para $f(y, \dot y)
-    = y \sqrt{1 + {\dot y}^2}$.
+    Novamente, vale a \autoref{eq:dot_derives_in_x}. Também de forma análoga ao
+    \autoref{eg:fermat}, definindo $\mathcal{L}(y, \dot y) := y \sqrt{1 + {\dot
+    y}^2}$, teremos que a curva $y(x)$ será a catenária, e será solução da
+    \autoref{eq:lagrange}.
+
 \end{eg}
 
 Entre outros exemplos úteis, temos:
@@ -91,13 +117,13 @@ usar a Identidade de Beltrami para encontrar grandezas constantes que auxiliam
 a resolução das equações de Euler-Lagrange:
 
 \begin{namedeq}[Identidade de Beltrami]
-    $\forall i \in \{1, \ldots, n\} \exists C_i = L - \dot q_i \tpd{L}{\dot
-    q_i} \text{t.q.} \tod{C_i}{t} = 0$, i.e.:
-    \begin{equation*}
+    \begin{gather*}
+        \forall i \in \{1, \ldots, n\},~\exists C_i = L - \dot q_i
+        \dpd{L}{\dot q_i}~\text{t.q.}~\dod{C_i}{t} = 0\text{, i.e.,} \\
+        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0\text{,}~\forall i \in
+            \{1, \ldots, n\}
         \label{eq:beltrami}
-        \dod{}{t} \del{L - \dot q_i \dpd{L}{\dot q_i}} = 0, \forall i \in \{1,
-        \ldots, n\}
-    \end{equation*}
+    \end{gather*}
 \end{namedeq}
 
 \subsubsection{Multiplicadores de Lagrange}

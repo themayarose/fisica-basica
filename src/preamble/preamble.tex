@@ -50,13 +50,16 @@
 \usepackage{amsthm}
 \usepackage{thmtools}
 
+\numberwithin{equation}{subsection}
+\numberwithin{figure}{subsection}
+\numberwithin{table}{subsection}
+
 \declaretheoremstyle[bodyfont=\normalfont\small,spaceabove=10pt, %
     spacebelow=10pt]{egstyle}
 \declaretheoremstyle[bodyfont=\normalfont,spaceabove=10pt, %
     spacebelow=10pt,notefont=\normalfont\bfseries,notebraces={- }{}]{eqstyle}
 \declaretheorem[name=Exemplo,parent=subsection,style=egstyle]{eg}
 \declaretheorem[name=Equação,sibling=equation,style=eqstyle]{namedeq}
-
 
 % Primeira letra maior
 \usepackage{lettrine}

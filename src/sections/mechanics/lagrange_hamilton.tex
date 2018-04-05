@@ -14,30 +14,31 @@ movimento (ainda que virtual).  Ou seja, para cada partícula indexada por $i \i
 por
 
 \begin{equation*}
-    Q_k = \sum_{i=1}^N \vec F_i \dpd{\vec r_i}{q_k} \text{.}
+    Q_k = \sum_{i=1}^n F_i \dpd{x_i}{q_k} \text{.}
 \end{equation*}
 
+Aqui, trata-se apenas de uma mudança de coordenadas de $\vec F$ para $Q$.
 Utilizando-se do princípio de d'Alembert, de cálculo variacional e após diversos
 passos, pode-se chegar a:
 
 \begin{equation}
     \label{eq:lagrange_original}
-    \dod{}{t} \del{\dpd{T}{\dot q_k}} - \dpd{T}{q_k} = Q_k \text{.}
+    \dod{}{t} \del{\dpd{T}{\dot q_k}} - \dpd{T}{q_k} = Q_k \text{,}
 \end{equation}
 
-Quando a força $Q_k$ deriva de um potencial escalar, i.e., $\vec F_i = -
-\nabla_i V$, temos que
+onde $T \equiv \text{energia cinética}$. Quando a força $\vec F$ deriva de um
+potencial escalar, i.e., $\vec F = -\nabla V$, temos que
 
 \begin{equation*}
-    Q_k = - \dpd{V}{q_k}
+    Q_k = - \dpd{V}{q_k} \text{,}
 \end{equation*}
 
-e se $Q_k = Q_k(q_{1k}(t), \ldots, q_{nk}(t), t)$, isto é, $Q_k$ não depende da
-velocidade da partícula $k$, sabemos que
+e se $Q_k = Q_k(q_1(t), \ldots, q_n(t), t)$, isto é, $Q_k$ não depende da
+velocidade da partícula, sabemos que
 
 \begin{equation*}
     \dpd{Q_k}{\dot q_k} = 0 ~\Rightarrow~ \dod{}{t} \del{\dpd{Q_k}{\dot q_k}} =
-    0
+    0 \text{,}
 \end{equation*}
 
 e daí, com $L := T - V$,
@@ -48,8 +49,8 @@ e daí, com $L := T - V$,
     \dod{}{t} \del{\dpd{L}{\dot q_k}} - \dpd{L}{q_k} = 0 \text{.}
 \end{equation*}
 
-Para forças que dependam da velocidade (e.g. força de Lorentz), deve-se utilizar
-o potencial generalizado $U$, definido como
+Para forças que dependam da velocidade (e.g. força de Lorentz, forças
+dissipativas), deve-se utilizar o potencial generalizado $U$, definido como
 
 \begin{equation*}
     Q_k = - \dpd{U}{q_k} + \dod{}{t} \del{\dpd{U}{\dot q_k}} \text{.}
